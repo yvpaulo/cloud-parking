@@ -1,8 +1,9 @@
 package com.yvsistemas.cloudparking.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ParkingDTO {
@@ -12,8 +13,10 @@ public class ParkingDTO {
     private String state;
     private String model;
     private String color;
-    private LocalDate entryDate;
-    private LocalDate exitDate;
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
+    private LocalDateTime entryDate;
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
+    private LocalDateTime exitDate;
     private Double bill;
 
     public String getId() {
@@ -56,19 +59,19 @@ public class ParkingDTO {
         this.color = color;
     }
 
-    public LocalDate getEntryDate() {
+    public LocalDateTime getEntryDate() {
         return entryDate;
     }
 
-    public void setEntryDate(LocalDate entryDate) {
+    public void setEntryDate(LocalDateTime entryDate) {
         this.entryDate = entryDate;
     }
 
-    public LocalDate getExitDate() {
+    public LocalDateTime getExitDate() {
         return exitDate;
     }
 
-    public void setExitDate(LocalDate exitDate) {
+    public void setExitDate(LocalDateTime exitDate) {
         this.exitDate = exitDate;
     }
 
