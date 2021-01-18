@@ -1,6 +1,8 @@
 package com.yvsistemas.cloudparking.service;
 
+import com.yvsistemas.cloudparking.exception.ParkingNotException;
 import com.yvsistemas.cloudparking.model.Parking;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -28,7 +30,12 @@ public class ParkingService {
     }
 
     public Parking findById(String id) {
-       return parkingMap.get(id);
+        Parking parking = parkingMap.get(id);
+        if(parking == null){
+            throw new ParkingNotException(id);
+        }
+
+        return parking;
     }
 
     public Parking create(Parking parkingCreate) {
@@ -37,6 +44,22 @@ public class ParkingService {
         parkingCreate.setEntryDate(LocalDateTime.now());
         parkingMap.put(uuid, parkingCreate);
         return parkingCreate;
+
+    }
+
+    public void delete(String id) {
+        findById(id);
+        parkingMap.remove(id);
+    }
+
+    public Parking update(String id, Parking parkingUpdate) {
+        Parking parking = findById(id);
+        parking.setState(parkingUpdate.getState());
+        parking.setModel(parkingUpdate.getModel());
+        parking.setLicense(parkingUpdate.getLicense());
+        parking.setColor(parkingUpdate.getColor());
+        parkingMap.replace(id, parking);
+        return parking;
 
     }
 }
