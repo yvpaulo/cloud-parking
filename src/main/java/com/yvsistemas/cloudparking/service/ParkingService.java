@@ -2,10 +2,8 @@ package com.yvsistemas.cloudparking.service;
 
 import com.yvsistemas.cloudparking.exception.ParkingNotException;
 import com.yvsistemas.cloudparking.model.Parking;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
@@ -17,11 +15,12 @@ import java.util.stream.Collectors;
 public class ParkingService {
     private static Map<String, Parking> parkingMap = new HashMap();
 
-    static {
+   /* static {
         var id  = getUUID();
         Parking parking = new Parking(id, "JPA-111", "BA", "Ferrari", "Vermelho");
         parkingMap.put(id, parking);
-    }
+    }*/
+
     private static String getUUID(){
         return UUID.randomUUID().toString().replace("-","");
     }
@@ -61,5 +60,13 @@ public class ParkingService {
         parkingMap.replace(id, parking);
         return parking;
 
+    }
+
+    public Parking exit(String id) {
+        Parking parking = findById(id);
+        parking.setExitDate(LocalDateTime.now());
+        //TODo: calcular taxa   Parei no video 12
+        parkingMap.replace(id,parking);
+        return parking;
     }
 }

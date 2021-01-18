@@ -1,0 +1,15 @@
+# Created at 2021-01-18T18:59:31.972
+WARNING: An illegal reflective access operation has occurred
+
+# Created at 2021-01-18T18:59:31.973
+WARNING: Illegal reflective access by org.codehaus.groovy.reflection.CachedClass (file:/home/yvs/.m2/repository/org/codehaus/groovy/groovy/2.5.13/groovy-2.5.13.jar) to method java.lang.Object.finalize()
+
+# Created at 2021-01-18T18:59:31.980
+WARNING: Please consider reporting this to the maintainers of org.codehaus.groovy.reflection.CachedClass
+
+# Created at 2021-01-18T18:59:31.981
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+
+# Created at 2021-01-18T18:59:31.982
+WARNING: All illegal access operations will be denied in a future release
+
